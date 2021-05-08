@@ -1,0 +1,60 @@
+/* 
+  Localizable.strings
+  aviasales
+
+  Created by Ilyas Tyumenev on 11.02.2021.
+  Copyright © 2021 Ilyas Tyumenev. All rights reserved.
+*/
+
+// TabBarController
+"search_tab" = "Search";
+"map_tab" = "Price map";
+"favorites_tab" = "Favorites";
+
+// MainViewController
+"main_title_vc" = "Search";
+"main_from" = "From";
+"main_to" = "To";
+"main_search" = "Find";
+
+// PlaceViewController
+"placetype_to" = "To";
+"placetype_from" = "From";
+"segment_cities" = "Cities";
+"segment_airports" = "Airports";
+
+
+// MapViewController
+"map_title_vc" = "Price map";
+
+// FirstViewController
+"about_app_header" = "ABOUT THE APP";
+"tickets_header" = "FLIGHTS";
+"map_price_header" = "PRICE MAP";
+"favorites_header" = "FAVORITES";
+"about_app_describe" = "Flight search application";
+"tickets_describe" = "Find the cheapest flights";
+"map_price_describe" = "View the price map";
+"favorites_describe" = "Save selected tickets to favorites";
+"next_button" = "NEXT";
+"done_button" = "READY";
+
+// TicketsViewController
+"favorites_title_vc" = "Favorites";
+"tickets_title" = "Tickets";
+"add_to_favorite" = "Add to favorite";
+"remove_from_favorite" = "Remove from favorite";
+"remind_me" = "Remind me";
+"ticket_reminder" = "Ticket reminder";
+"notification_will_be_sent" = "Notification will be sent";
+"success" = "Success";
+
+// Alerts
+"error" = "Error";
+"alas" = "Alas!";
+"tickets_not_found" = "No tickets found for this direction";
+"close" = "Close";
+"not_set_place_arrival_or_departure" = "Not set place arrival or departure";
+"actions_with_tickets" = "Actions with tickets";
+"actions_with_tickets_describe" = "What should be done with the selected ticket?";
+"not_determine_current_city" = "Not determine current city!";

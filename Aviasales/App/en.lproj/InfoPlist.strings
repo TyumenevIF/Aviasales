@@ -1,0 +1,10 @@
+/* 
+  InfoPlist.strings
+  aviasales
+
+  Created by Ilyas Tyumenev on 12.02.2021.
+  Copyright © 2021 Ilyas Tyumenev. All rights reserved.
+*/
+
+"CFBundleDisplayName" = "AVIASALES";
+"CFBundleName" = "AVIASALES";
