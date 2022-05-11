@@ -26,22 +26,22 @@
 }
 
 
-// В registerService осуществляется запрос на получение доступа для отправления уведомлений, который будет происходить в момент первого
-// запуска приложения
+// В registerService осуществляется запрос на получение доступа для отправления уведомлений, который будет происходить
+// в момент первого запуска приложения
 - (void)registerService {
     UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
     center.delegate = self;
     [center requestAuthorizationWithOptions:(UNAuthorizationOptionBadge | UNAuthorizationOptionSound | UNAuthorizationOptionAlert)
                           completionHandler:^(BOOL granted, NSError * _Nullable error) {
-        if (!error) {
-            NSLog(@"request authorization succeeded!");
+        if (error) {
+            NSLog(@"request authorization in not succeeded!");
         }
     }];
 }
 
 
-// При отправлении уведомления на основе переданной структуры формируется уведомление, добавляется в очередь и ожидает указанной даты для
-// отображения пользователю.
+// При отправлении уведомления на основе переданной структуры формируется уведомление, добавляется в очередь и ожидает
+// указанной даты для отображения пользователю.
 - (void)sendNotification:(Notification)notification {
     UNMutableNotificationContent *content = [[UNMutableNotificationContent alloc] init];
     content.title = notification.title;
@@ -51,7 +51,8 @@
     if (notification.imageURL) {
         UNNotificationAttachment *attachment = [UNNotificationAttachment attachmentWithIdentifier:@"image"
                                                                                               URL:notification.imageURL
-                                                                                          options:nil error:nil];
+                                                                                          options:nil
+                                                                                            error:nil];
         if (attachment) {
             content.attachments = @[attachment];
         }
@@ -67,16 +68,21 @@
     newComponents.hour = components.hour;
     newComponents.minute = components.minute;
     
-    UNCalendarNotificationTrigger *trigger = [UNCalendarNotificationTrigger triggerWithDateMatchingComponents:newComponents repeats:NO];
+    UNCalendarNotificationTrigger *trigger =
+    [UNCalendarNotificationTrigger triggerWithDateMatchingComponents:newComponents repeats:NO];
     UNNotificationRequest *request = [UNNotificationRequest requestWithIdentifier:@"Notification"
-                                                                          content:content trigger:trigger];
+                                                                          content:content
+                                                                          trigger:trigger];
     UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
     [center addNotificationRequest:request withCompletionHandler:nil];
 }
 
 
 // Функция NotificationMake создает структуру на основе указанных параметров
-Notification NotificationMake(NSString* _Nullable title, NSString* _Nonnull body, NSDate* _Nonnull date, NSURL * _Nullable  imageURL) {
+Notification NotificationMake(NSString* _Nullable title,
+                              NSString* _Nonnull body,
+                              NSDate* _Nonnull date,
+                              NSURL * _Nullable  imageURL) {
     Notification notification;
     notification.title = title;
     notification.body = body;

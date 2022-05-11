@@ -46,12 +46,12 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             [[NSNotificationCenter defaultCenter] postNotificationName:kDataManagerLoadDataDidComplete object:nil];
         });
-        NSLog(@"Complete load data");
     });
 }
 
 
-// В методе cityForIATA осуществляется сравнение всех объектов городов по значению кода и при наличии соответствия возвращается значение города
+// В методе cityForIATA осуществляется сравнение всех объектов городов по значению кода и при наличии соответствия
+// возвращается значение города
 - (City *)cityForIATA:(NSString *)iata {
     if (iata) {
         for (City *city in _citiesArray) {
@@ -64,8 +64,8 @@
 }
 
 
-// createObjectsFromArray: — метод для создания массива готовых объектов из массива объектов NSDictionary. Входными параметрами метода
-// являются сам массив объектов NSDictionary и тип данных (в какой объект будет преобразован)
+// createObjectsFromArray: — метод для создания массива готовых объектов из массива объектов NSDictionary. Входными
+// параметрами метода являются сам массив объектов NSDictionary и тип данных (в какой объект будет преобразован)
 - (NSMutableArray *)createObjectsFromArray:(NSArray *)array withType:(DataSourceType)type {
     NSMutableArray *results = [NSMutableArray new];
     
@@ -87,7 +87,8 @@
 }
 
 
-// arrayFromFileName: — метод для загрузки массива объектов NSDictionary из файлов json. Входными параметрами метода являются имя и тип файла.
+// arrayFromFileName: — метод для загрузки массива объектов NSDictionary из файлов json. Входными параметрами метода
+// являются имя и тип файла.
 - (NSArray *)arrayFromFileName:(NSString *)fileName ofType:(NSString *)type {
     NSString *path = [[NSBundle mainBundle] pathForResource:fileName ofType:type];
     NSData *data = [NSData dataWithContentsOfFile:path];
@@ -106,8 +107,8 @@
     return _airportsArray;
 }
 
-// Метод cityForLocation возвращает город из данных на основе местоположения. В нем выполняется перебор всех городов и сравнение
-// округленных значений широты и долготы. При их совпадении метод возвращает город.
+// Метод cityForLocation возвращает город из данных на основе местоположения. В нем выполняется перебор всех городов и
+// сравнение округленных значений широты и долготы. При их совпадении метод возвращает город.
 - (City *)cityForLocation:(CLLocation *)location {
     for (City *city in _citiesArray) {
         if (ceilf(city.coordinate.latitude) == ceilf(location.coordinate.latitude) &&

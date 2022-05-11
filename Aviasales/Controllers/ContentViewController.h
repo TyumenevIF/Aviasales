@@ -11,8 +11,8 @@
 @interface ContentViewController : UIViewController
 
 // свойства - изображения самолетов, заголовок и несколько слов о приложении
-@property (nonatomic, strong) NSString *contentText;
 @property (nonatomic, strong) UIImage *image;
 @property (nonatomic) int index;
+@property (nonatomic, strong) NSString *contentText;
 
 @end

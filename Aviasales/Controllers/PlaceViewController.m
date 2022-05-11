@@ -76,8 +76,8 @@
 }
 
 
-// реализуется метод changeSource, который вызывается при смене источника данных. В нем массиву currentArray присваивается значение нужного
-// массива из DataManager (городов или аэропортов), а после обновляется таблица.
+// реализуется метод changeSource, который вызывается при смене источника данных. В нем массиву currentArray
+// присваивается значение нужного массива из DataManager (городов или аэропортов), а после обновляется таблица.
 - (void)changeSource {
     switch (_segmentedControl.selectedSegmentIndex) {
         case 0:
@@ -94,9 +94,9 @@
 
 #pragma mark - UISearchResultsUpdating
 
-// updateSearchResultsForSearchController - обязательный метод для протокола UISearchResultsUpdating. Он вызывается каждый раз при
-// обновлении поисковой строки. Благодаря NSPredicate фильтруется полный массив городов или аэропортов и готовое значение устанавливается
-// для searchArray, а затем обновляется табличное представление.
+// updateSearchResultsForSearchController - обязательный метод для протокола UISearchResultsUpdating. Он вызывается
+// каждый раз при обновлении поисковой строки. Благодаря NSPredicate фильтруется полный массив городов или аэропортов и
+// готовое значение устанавливается для searchArray, а затем обновляется табличное представление.
 - (void)updateSearchResultsForSearchController:(UISearchController *)searchController {
     if (searchController.searchBar.text) {
         NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.name CONTAINS[cd] %@", searchController.searchBar.text];
@@ -107,8 +107,8 @@
 
 #pragma mark - UITableViewDataSource
 
-// в методе numberOfRowsInSection осуществляется проверка: если контроллер поиска активен и количество найденных элементов больше 0, то
-// возвращается значение элементов для них, иначе возвращается количество всех элементов.
+// в методе numberOfRowsInSection осуществляется проверка: если контроллер поиска активен и количество найденных
+// элементов больше 0, то возвращается значение элементов для них, иначе возвращается количество всех элементов.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (_searchController.isActive && [_searchArray count] > 0) {
         return [_searchArray count];
@@ -125,15 +125,14 @@
     }
     
     if (_segmentedControl.selectedSegmentIndex == 0) {
-        City *city = (_searchController.isActive && [_searchArray count] > 0) ? [_searchArray objectAtIndex:indexPath.row] :
-                                                                                            [_currentArray objectAtIndex:indexPath.row];
+        City *city = (_searchController.isActive && [_searchArray count] > 0) ?
+        [_searchArray objectAtIndex:indexPath.row] : [_currentArray objectAtIndex:indexPath.row];
         cell.textLabel.text = city.name;
         cell.detailTextLabel.text = city.code;
     }
     else if (_segmentedControl.selectedSegmentIndex == 1) {
-        Airport *airport = (_searchController.isActive &&
-                            [_searchArray count] > 0) ? [_searchArray objectAtIndex:indexPath.row] :
-                                                                                            [_currentArray objectAtIndex:indexPath.row];
+        Airport *airport = (_searchController.isActive && [_searchArray count] > 0) ?
+        [_searchArray objectAtIndex:indexPath.row] : [_currentArray objectAtIndex:indexPath.row];
         cell.textLabel.text = airport.name;
         cell.detailTextLabel.text = airport.code;
     }
@@ -143,8 +142,8 @@
 
 #pragma mark - UITableViewDelegate
 
-// реализуется метод протокола UITableViewDelegate для определения нажатия на ячейку, при котором с помощью делегата на главный экран
-// передается выбранное место и контроллер закрывается
+// реализуется метод протокола UITableViewDelegate для определения нажатия на ячейку, при котором с помощью делегата на
+// главный экран передается выбранное место и контроллер закрывается
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     DataSourceType dataType = ((int)_segmentedControl.selectedSegmentIndex) + 1;
     if (_searchController.isActive && [_searchArray count] > 0) {

@@ -27,8 +27,9 @@
     TicketTableViewCell *notificationCell;
 }
 
-// Конструктор initFavoriteTicketsController, при котором контроллер настраивает свою работу конкретно для избранных билетов.
-// Для проверки используется переменная isFavorite, которой устанавливается значение Истина при инициализации только этим конструктором.
+// Конструктор initFavoriteTicketsController, при котором контроллер настраивает свою работу конкретно для избранных
+// билетов. Для проверки используется переменная isFavorite, которой устанавливается значение Истина при инициализации
+// только этим конструктором.
 - (instancetype)initFavoriteTicketsController {
     self = [super init];
     if (self) {
@@ -42,9 +43,9 @@
 }
 
 
-// Для инициализации создан собственный конструктор, в который передается массив объектов Ticket, которые необходимо отобразить в таблице.
-// В нем устанавливается имя для контроллера, регистрируется ячейка таблицы, создаются скрытый _dateTextField и _datePicker, а также
-// добавляется кнопка “готово” для клавиатуры
+// Для инициализации создан собственный конструктор, в который передается массив объектов Ticket, которые необходимо
+// отобразить в таблице. В нем устанавливается имя для контроллера, регистрируется ячейка таблицы, создаются скрытый
+// _dateTextField и _datePicker, а также добавляется кнопка “готово” для клавиатуры
 - (instancetype)initWithTickets:(NSArray *)tickets {
     self = [super init];
     if (self) {
@@ -83,9 +84,9 @@
 }
 
 
-// В методе viewDidAppear обновляется массив избранных билетов и перезагружается таблица. Это необходимо для обновления контента каждый раз
-// когда пользователь заново открывает данный экран, так как он может перейти и добавить новый билет, а затем вернуться в избранное и
-// контент уже должен быть обновлен.
+// В методе viewDidAppear обновляется массив избранных билетов и перезагружается таблица. Это необходимо для обновления
+// контента каждый раз, когда пользователь заново открывает данный экран, так как он может перейти и добавить новый
+// билет, а затем вернуться в избранное и контент уже должен быть обновлен.
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
@@ -104,8 +105,8 @@
 }
 
 
-// В зависимости от значения переменной isFavorite, в методе cellForRowAtIndexPath выбирается свойство ячейки, которому необходимо
-// установить значение ticket или favoriteTicket (которое будет добавлено позже).
+// В зависимости от значения переменной isFavorite, в методе cellForRowAtIndexPath выбирается свойство ячейки, которому
+// необходимо установить значение ticket или favoriteTicket (которое будет добавлено позже).
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     TicketTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:TicketCellReuseIdentifier forIndexPath:indexPath];
     if (isFavorites) {
@@ -123,10 +124,11 @@
 }
 
 
-// В методе didSelectRowAtIndexPath ничего не происходит при истинности isFavorite, иначе пользователю отображается диалоговое окно,
-// в котором предлагается добавить либо удалить билет из избранного, в зависимости от его текущего статуса, также предлагается действие
-// для создания уведомления. При его выборе становится активным _dateTextField, благодаря чему отображается _datePicker. Кроме этого
-// устанавливается значение выбранной ячейки. При нажатии кнопки “Done” создается уведомление на выбранную дату и добавляется в очередь.
+// В методе didSelectRowAtIndexPath ничего не происходит при истинности isFavorite, иначе пользователю отображается
+// диалоговое окно, в котором предлагается добавить либо удалить билет из избранного, в зависимости от его текущего
+// статуса, также предлагается действие для создания уведомления. При его выборе становится активным _dateTextField,
+// благодаря чему отображается _datePicker. Кроме этого устанавливается значение выбранной ячейки. При нажатии кнопки
+// “Done” создается уведомление на выбранную дату и добавляется в очередь.
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (isFavorites) return;
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Действия с билетом"
@@ -166,13 +168,18 @@
 
 - (void)doneButtonDidTap:(UIBarButtonItem *)sender {
     if (_datePicker.date && notificationCell) {
-        NSString *message = [NSString stringWithFormat:@"%@ - %@ за %@ руб.", notificationCell.ticket.from, notificationCell.ticket.to, notificationCell.ticket.price];
+        NSString *message = [NSString stringWithFormat:@"%@ - %@ за %@ руб.", notificationCell.ticket.from,
+                             notificationCell.ticket.to, notificationCell.ticket.price];
         NSURL *imageURL;
-        Notification notification = NotificationMake(NSLocalizedString(@"ticket_reminder", ""), message, _datePicker.date, imageURL);
+        Notification notification = NotificationMake(NSLocalizedString(@"ticket_reminder", ""),
+                                                     message,
+                                                     _datePicker.date, imageURL);
         [[NotificationCenter sharedInstance] sendNotification:notification];
 
-        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"success", "") message:[NSString stringWithFormat:NSLocalizedString(@"notification_will_be_sent", ""), "- %@", _datePicker.date] preferredStyle:(UIAlertControllerStyleAlert)];
-        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"close", "") style:UIAlertActionStyleCancel handler:nil];
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"success", "")
+                                                                                 message:[NSString stringWithFormat:NSLocalizedString(@"notification_will_be_sent", ""), "- %@", _datePicker.date] preferredStyle:(UIAlertControllerStyleAlert)];
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"close", "")
+                                                               style:UIAlertActionStyleCancel handler:nil];
         [alertController addAction:cancelAction];
         [self presentViewController:alertController animated:YES completion:nil];
     }

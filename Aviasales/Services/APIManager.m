@@ -27,10 +27,12 @@
 }
 
 
-// Метод cityForCurrentIP на основании ip-адреса и с помощью запроса к API Aviasales позволяет получить текущий город пользователя
+// Метод cityForCurrentIP на основании ip-адреса и с помощью запроса к API Aviasales позволяет получить текущий город
+// пользователя
 -(void)cityForCurrentIP:(void (^)(City *))completion {
     [self IPAddressWithCompletion:^(NSString *ipAddress) {
-        [self load:[NSString stringWithFormat:@"%@%@", API_URL_CITY_FROM_IP, ipAddress] withCompletion:^(id  _Nullable result) {
+        [self load:[NSString stringWithFormat:@"%@%@", API_URL_CITY_FROM_IP, ipAddress]
+    withCompletion:^(id  _Nullable result) {
             NSDictionary *json = result;
             NSString *iata = [json valueForKey:@"iata"];
             if (iata) {
@@ -46,8 +48,8 @@
 }
 
 
-// В методе ticketsWithRequest происходит загрузка данных из API на основе searchRequest, который создается в главном контроллере. И на
-// основании полученных данных формируется массив с объектами Ticket.
+// В методе ticketsWithRequest происходит загрузка данных из API на основе searchRequest, который создается в главном
+// контроллере. И на основании полученных данных формируется массив с объектами Ticket.
 - (void)ticketsWithRequest:(SearchRequest)request withCompletion:(void (^)(NSArray *tickets))completion {
     NSString *urlString = [NSString stringWithFormat:@"%@?%@&token=%@", API_URL_CHEAP, SearchRequestQuery(request), API_TOKEN];
     [self load:urlString withCompletion:^(id  _Nullable result) {
@@ -75,7 +77,9 @@ NSString * SearchRequestQuery(SearchRequest request) {
     if (request.departDate && request.returnDate) {
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
         dateFormatter.dateFormat = @"yyyy-MM";
-        result = [NSString stringWithFormat:@"%@&depart_date=%@&return_date=%@", result, [dateFormatter stringFromDate:request.departDate],
+        result = [NSString stringWithFormat:@"%@&depart_date=%@&return_date=%@",
+                  result,
+                  [dateFormatter stringFromDate:request.departDate],
                   [dateFormatter stringFromDate:request.returnDate]];
     }
     return result;
@@ -94,15 +98,17 @@ NSString * SearchRequestQuery(SearchRequest request) {
     dispatch_async(dispatch_get_main_queue(), ^{
     });
     [[[NSURLSession sharedSession] dataTaskWithURL:[NSURL URLWithString:urlString]
-                                 completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+                                 completionHandler:^(NSData * _Nullable data,
+                                                     NSURLResponse * _Nullable response,
+                                                     NSError * _Nullable error) {
         dispatch_async(dispatch_get_main_queue(), ^{
         });
         completion([NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil]);
     }] resume] ;
 }
 
-// Метод для получения данных от API - осуществляется загрузка данных из API и на их основе создается массив объектов MapPrice, которые
-// будут отображены далее на карте.
+// Метод для получения данных от API - осуществляется загрузка данных из API и на их основе создается массив объектов
+// MapPrice, которые будут отображены далее на карте.
 - (void)mapPricesFor:(City *)origin withCompletion:(void (^)(NSArray *prices))completion
 {
     static BOOL isLoading;

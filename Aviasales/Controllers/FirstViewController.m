@@ -13,14 +13,15 @@
 
 @interface FirstViewController ()
 
-// У FirstViewController есть также собственные компоненты, такие как кнопка, которая будет перемещать пользователя на следующий экран и
-// компонент для отображения страниц (UIPageControl).
+// У FirstViewController есть также собственные компоненты, такие как кнопка, которая будет перемещать пользователя
+// на следующий экран и компонент для отображения страниц (UIPageControl).
 @property (strong, nonatomic) UIButton *nextButton;
 @property (strong, nonatomic) UIPageControl *pageControl;
 
 @end
 
-// Для более удобной работы с контентом создана структура contentData (Массив языка С с заголовком, текстом и названием изображения).
+// Для более удобной работы с контентом создана структура contentData (Массив языка С с заголовком, текстом и
+// названием изображения).
 @implementation FirstViewController {
     struct firstContentData {
         __unsafe_unretained NSString *title;
@@ -29,8 +30,8 @@
     } contentData[CONTENT_COUNT];
 }
 
-// При загрузке создаются данные для отображения с помощью метода createContentDataArray. Затем устанавливается первый контроллер для
-// отображения, а после конфигурируются кнопка и компонент отображения страниц.
+// При загрузке создаются данные для отображения с помощью метода createContentDataArray. Затем устанавливается первый
+// контроллер для отображения, а после конфигурируются кнопка и компонент отображения страниц.
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -40,9 +41,15 @@
     self.dataSource = self;
     self.delegate = self;
     ContentViewController *startViewController = [self viewControllerAtIndex:0];
-    [self setViewControllers:@[startViewController] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+    [self setViewControllers:@[startViewController]
+                   direction:UIPageViewControllerNavigationDirectionForward
+                    animated:NO
+                  completion:nil];
     
-    _pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, self.view.bounds.size.height - 150.0, self.view.bounds.size.width, 50.0)];
+    _pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0,
+                                                                   self.view.bounds.size.height - 150.0,
+                                                                   self.view.bounds.size.width,
+                                                                   50.0)];
     _pageControl.numberOfPages = CONTENT_COUNT;
     _pageControl.currentPage = 0;
     _pageControl.pageIndicatorTintColor = [UIColor darkGrayColor];
@@ -50,7 +57,10 @@
     [self.view addSubview:_pageControl];
     
     _nextButton = [UIButton buttonWithType:UIButtonTypeSystem];
-    _nextButton.frame = CGRectMake(self.view.bounds.size.width - 100.0, self.view.bounds.size.height - 150.0, 100.0, 50.0);
+    _nextButton.frame = CGRectMake(self.view.bounds.size.width - 100.0,
+                                   self.view.bounds.size.height - 150.0,
+                                   100.0,
+                                   50.0);
     [_nextButton addTarget:self action:@selector(nextButtonDidTap:) forControlEvents:UIControlEventTouchUpInside];
     [_nextButton setTintColor:[UIColor blackColor]];
     [self updateButtonWithIndex:0];
@@ -78,8 +88,8 @@
 }
 
 
-// Для более удобного получения контроллера был создан метод viewControllerAtIndex, который на основе индекса создает контроллер для
-// контента и возвращает его.
+// Для более удобного получения контроллера был создан метод viewControllerAtIndex, который на основе индекса создает
+// контроллер для контента и возвращает его.
 - (ContentViewController *)viewControllerAtIndex:(int)index {
     if (index < 0 || index >= CONTENT_COUNT) {
         return nil;
@@ -104,8 +114,8 @@
 }
 
 
-// Если пользователь дошел до последней страницы, то кнопка получит название “ДАЛЕЕ”, иначе “ГОТОВО”. При нажатии кнопки соответственно
-// будет осуществляться либо переход на следующую страницу, либо полное закрытие
+// Если пользователь дошел до последней страницы, то кнопка получит название “ДАЛЕЕ”, иначе “ГОТОВО”. При нажатии кнопки
+// соответственно будет осуществляться либо переход на следующую страницу, либо полное закрытие
 - (void)updateButtonWithIndex:(int)index {
     switch (index) {
         case 0:
@@ -131,7 +141,9 @@
         [self dismissViewControllerAnimated:YES completion:nil];
     } else {
         __weak typeof(self) weakSelf = self;
-        [self setViewControllers:@[[self viewControllerAtIndex:index+1]] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:^(BOOL finished) {
+        [self setViewControllers:@[[self viewControllerAtIndex:index+1]]
+                       direction:UIPageViewControllerNavigationDirectionForward
+                        animated:YES completion:^(BOOL finished) {
             weakSelf.pageControl.currentPage = index+1;
             [weakSelf updateButtonWithIndex:index+1];
         }];
@@ -141,14 +153,16 @@
 #pragma mark - UIPageViewControllerDataSource
 
 // методы протокола UIPageViewControllerDataSource - в них возвращается следующая и предыдущая страница соответственно.
-- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController {
+- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController
+      viewControllerBeforeViewController:(UIViewController *)viewController {
     int index = ((ContentViewController *)viewController).index;
     index--;
     return [self viewControllerAtIndex:index];
 }
 
 
-- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController {
+- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController
+       viewControllerAfterViewController:(UIViewController *)viewController {
     int index = ((ContentViewController *)viewController).index;
     index++;
     return [self viewControllerAtIndex:index];

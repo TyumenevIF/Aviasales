@@ -12,7 +12,6 @@
 
 + (instancetype)sharedInstance;
 
-// два метода для отображения и скрытия
 - (void)show:(void (^)(void))completion;
 - (void)dismiss:(void (^)(void))completion;
 

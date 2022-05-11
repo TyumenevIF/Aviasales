@@ -106,7 +106,8 @@
 }
 
 
-// Метод favorites возвращает массив всех избранных билетов, отсортированных по дате создания, где сначала идут последние добавленные билеты
+// Метод favorites возвращает массив всех избранных билетов, отсортированных по дате создания, где сначала идут
+// последние добавленные билеты
 - (NSArray *)favorites {
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"FavoriteTicket"];
     request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"created" ascending:NO]];

@@ -21,18 +21,11 @@
 
 - (void)scene:(UIScene *)scene willConnectToSession:(UISceneSession *)session options:(UISceneConnectionOptions *)connectionOptions {
     
-    // Создадим окно по размеру экрана
     CGRect windowFrame = [[UIScreen mainScreen] bounds];
     self.window = [[UIWindow alloc] initWithFrame:windowFrame];
-    
-    // Первым экраном у окна будет контроллер панели вкладок
     TabBarController *tabBarController = [[TabBarController alloc] init];
     self.window.rootViewController = tabBarController;
-    
-    // Отобразим окно на экране
     [self.window makeKeyAndVisible];
-    
-    // Свяжем окно и сцену
     UIWindowScene *windowScene = (UIWindowScene *)scene;
     [self.window setWindowScene:windowScene];
     

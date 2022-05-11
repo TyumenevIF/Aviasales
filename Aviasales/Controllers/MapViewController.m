@@ -14,8 +14,8 @@
 
 @interface MapViewController () <MKMapViewDelegate>
 
-// Свойства самой карты (mapView), объекта, который отвечает за работу с местоположением (locationService), объект города отправления
-// (origin), а также массив полученных от API объектов.
+// Свойства самой карты (mapView), объекта, который отвечает за работу с местоположением (locationService), объект
+// города отправления (origin), а также массив полученных от API объектов.
 @property (strong, nonatomic) MKMapView *mapView;
 @property (nonatomic, strong) LocationService *locationService;
 @property (nonatomic, strong) City *origin;
@@ -29,9 +29,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // При загрузке контроллера создается карта, загружаются данные (этот функционал перенесен с MainViewController), а также он
-    // подписывается на уведомления от DataManager – о том, что данные были полностью загружены, и от LocationService – о том, что было
-    // получено текущее местоположение.
+    // При загрузке контроллера создается карта, загружаются данные (этот функционал перенесен с MainViewController),
+    // а также он подписывается на уведомления от DataManager – о том, что данные были полностью загружены, и от
+    // LocationService – о том, что было получено текущее местоположение.
     self.title = NSLocalizedString(@"map_title_vc", "");
     
     _mapView = [[MKMapView alloc] initWithFrame:self.view.bounds];
@@ -40,7 +40,10 @@
     
     [[DataManager sharedInstance] loadData];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dataLoadedSuccessfully) name:kDataManagerLoadDataDidComplete object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(dataLoadedSuccessfully)
+                                                 name:kDataManagerLoadDataDidComplete
+                                               object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateCurrentLocation:) name:kLocationServiceDidUpdateCurrentLocation object:nil];
 }
 
@@ -51,8 +54,8 @@
 }
 
 
-// Метод updateCurrentLocation отвечает за обновление региона и загрузку данных из API, так как в него передается текущее местоположение от
-// уведомления. При успешной загрузке устанавливается значение для свойства prices.
+// Метод updateCurrentLocation отвечает за обновление региона и загрузку данных из API, так как в него передается
+// текущее местоположение от уведомления. При успешной загрузке устанавливается значение для свойства prices.
 - (void)updateCurrentLocation:(NSNotification *)notification {
     CLLocation *currentLocation = notification.object;
     
