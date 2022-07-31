@@ -129,15 +129,13 @@
 			isa = PBXGroup;
 			children = (
 				28F715F02596874200EF7DD1 /* Assets.xcassets */,
-				28F715E42596874100EF7DD1 /* AppDelegate.h */,
-				28F715E52596874100EF7DD1 /* AppDelegate.m */,
+				433015D72896D105001D982D /* AppDelegate */,
+				433015D82896D132001D982D /* SceneDelegate */,
 				28F715F52596874200EF7DD1 /* Info.plist */,
 				284B9C4825D5DB3900F141B8 /* InfoPlist.strings */,
 				28F715F22596874200EF7DD1 /* LaunchScreen.storyboard */,
 				284B9C3E25D5BEA600F141B8 /* Localizable.strings */,
 				28F715F62596874200EF7DD1 /* main.m */,
-				28F715E72596874100EF7DD1 /* SceneDelegate.h */,
-				28F715E82596874100EF7DD1 /* SceneDelegate.m */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -145,16 +143,11 @@
 		28B1D2B42645A70A004B74D3 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				28BB359F2597D30D000B116A /* Country.h */,
-				28BB35A02597D30D000B116A /* Country.m */,
-				28BB35A22597D530000B116A /* City.h */,
-				28BB35A32597D530000B116A /* City.m */,
-				28BB35A52597D916000B116A /* Airport.h */,
-				28BB35A62597D916000B116A /* Airport.m */,
-				284CA9D525ABAAC000BC0911 /* Ticket.h */,
-				284CA9D625ABAAC000BC0911 /* Ticket.m */,
-				2837C64225B8C9A4001FDDFD /* MapPrice.h */,
-				2837C64325B8C9A4001FDDFD /* MapPrice.m */,
+				433015D92896D154001D982D /* Country */,
+				433015DA2896D160001D982D /* City */,
+				433015DB2896D16C001D982D /* Airport */,
+				433015DC2896D179001D982D /* Ticket */,
+				433015DD2896D188001D982D /* MapPrice */,
 				28B8E60625C5647A00A71FB5 /* Model.xcdatamodeld */,
 			);
 			path = Models;
@@ -163,20 +156,13 @@
 		28B1D2B62645A76E004B74D3 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				28F715EA2596874100EF7DD1 /* MainViewController.h */,
-				28F715EB2596874100EF7DD1 /* MainViewController.m */,
-				2873B9D325A1FF01002F2950 /* PlaceViewController.h */,
-				2873B9D425A1FF01002F2950 /* PlaceViewController.m */,
-				284CA9DE25ABB5BE00BC0911 /* TicketsViewController.h */,
-				284CA9DF25ABB5BE00BC0911 /* TicketsViewController.m */,
-				2837C64625B8CE7A001FDDFD /* MapViewController.h */,
-				2837C64725B8CE7A001FDDFD /* MapViewController.m */,
-				28B6165E25BF5E4700B1C16A /* TabBarController.h */,
-				28B6165F25BF5E4700B1C16A /* TabBarController.m */,
-				28D74B7A25D53935004049CB /* ContentViewController.h */,
-				28D74B7B25D53935004049CB /* ContentViewController.m */,
-				28D74B7E25D53C43004049CB /* FirstViewController.h */,
-				28D74B7F25D53C43004049CB /* FirstViewController.m */,
+				433015E02896D1F5001D982D /* MainViewController */,
+				433015E12896D207001D982D /* PlaceViewController */,
+				433015E22896D219001D982D /* TicketsViewController */,
+				433015E32896D22B001D982D /* MapViewController */,
+				433015E42896D23A001D982D /* TabBarController */,
+				433015E52896D250001D982D /* ContentViewController */,
+				433015E62896D261001D982D /* FirstViewController */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -184,20 +170,13 @@
 		28B1D2B82645A838004B74D3 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				28BB35A82597DB09000B116A /* DataManager.h */,
-				28BB35A92597DB09000B116A /* DataManager.m */,
-				284CA9CE25AB7C3000BC0911 /* APIManager.h */,
-				284CA9CF25AB7C3000BC0911 /* APIManager.m */,
-				2837C63D25B8C25F001FDDFD /* LocationService.h */,
-				2837C63E25B8C25F001FDDFD /* LocationService.m */,
-				28D74B8325D557F6004049CB /* NotificationCenter.h */,
-				28D74B8425D557F6004049CB /* NotificationCenter.m */,
-				28B8E60A25C5657F00A71FB5 /* FavoriteTicket+CoreDataProperties.h */,
-				28B8E60D25C5657F00A71FB5 /* FavoriteTicket+CoreDataProperties.m */,
-				28B8E60B25C5657F00A71FB5 /* FavoriteTicket+CoreDataClass.h */,
-				28B8E60C25C5657F00A71FB5 /* FavoriteTicket+CoreDataClass.m */,
-				28B8E61325C5669700A71FB5 /* CoreDataHelper.h */,
-				28B8E61425C5669700A71FB5 /* CoreDataHelper.m */,
+				433015E72896D270001D982D /* DataManager */,
+				433015E82896D27F001D982D /* APIManager */,
+				433015E92896D291001D982D /* LocationService */,
+				433015EA2896D29D001D982D /* NotificationCenter */,
+				433015EB2896D2B2001D982D /* FavoriteTicket+CoreDataProperties */,
+				433015EC2896D2C0001D982D /* FavoriteTicket+CoreDataClass */,
+				433015ED2896D2CE001D982D /* CoreDataHelper */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -205,10 +184,8 @@
 		28B1D2BB2645B5D7004B74D3 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				28EAEFE325D1D72300FDE92C /* ProgressView.h */,
-				28EAEFE425D1D72300FDE92C /* ProgressView.m */,
-				284CA9DA25ABB10700BC0911 /* TicketTableViewCell.h */,
-				284CA9DB25ABB10700BC0911 /* TicketTableViewCell.m */,
+				433015DE2896D19E001D982D /* ProgressView */,
+				433015DF2896D1AF001D982D /* TicketTableViewCell */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -216,7 +193,7 @@
 		28F715D82596874100EF7DD1 = {
 			isa = PBXGroup;
 			children = (
-				28F715E32596874100EF7DD1 /* aviasales */,
+				28F715E32596874100EF7DD1 /* Aviasales */,
 				28F715E22596874100EF7DD1 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -229,7 +206,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		28F715E32596874100EF7DD1 /* aviasales */ = {
+		28F715E32596874100EF7DD1 /* Aviasales */ = {
 			isa = PBXGroup;
 			children = (
 				28B1D2AF2645A551004B74D3 /* App */,
@@ -239,7 +216,214 @@
 				28B1D2B62645A76E004B74D3 /* Controllers */,
 				28B1D2B82645A838004B74D3 /* Services */,
 			);
-			path = aviasales;
+			path = Aviasales;
+			sourceTree = "<group>";
+		};
+		433015D72896D105001D982D /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				28F715E42596874100EF7DD1 /* AppDelegate.h */,
+				28F715E52596874100EF7DD1 /* AppDelegate.m */,
+			);
+			path = AppDelegate;
+			sourceTree = "<group>";
+		};
+		433015D82896D132001D982D /* SceneDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				28F715E72596874100EF7DD1 /* SceneDelegate.h */,
+				28F715E82596874100EF7DD1 /* SceneDelegate.m */,
+			);
+			path = SceneDelegate;
+			sourceTree = "<group>";
+		};
+		433015D92896D154001D982D /* Country */ = {
+			isa = PBXGroup;
+			children = (
+				28BB359F2597D30D000B116A /* Country.h */,
+				28BB35A02597D30D000B116A /* Country.m */,
+			);
+			path = Country;
+			sourceTree = "<group>";
+		};
+		433015DA2896D160001D982D /* City */ = {
+			isa = PBXGroup;
+			children = (
+				28BB35A22597D530000B116A /* City.h */,
+				28BB35A32597D530000B116A /* City.m */,
+			);
+			path = City;
+			sourceTree = "<group>";
+		};
+		433015DB2896D16C001D982D /* Airport */ = {
+			isa = PBXGroup;
+			children = (
+				28BB35A52597D916000B116A /* Airport.h */,
+				28BB35A62597D916000B116A /* Airport.m */,
+			);
+			path = Airport;
+			sourceTree = "<group>";
+		};
+		433015DC2896D179001D982D /* Ticket */ = {
+			isa = PBXGroup;
+			children = (
+				284CA9D525ABAAC000BC0911 /* Ticket.h */,
+				284CA9D625ABAAC000BC0911 /* Ticket.m */,
+			);
+			path = Ticket;
+			sourceTree = "<group>";
+		};
+		433015DD2896D188001D982D /* MapPrice */ = {
+			isa = PBXGroup;
+			children = (
+				2837C64225B8C9A4001FDDFD /* MapPrice.h */,
+				2837C64325B8C9A4001FDDFD /* MapPrice.m */,
+			);
+			path = MapPrice;
+			sourceTree = "<group>";
+		};
+		433015DE2896D19E001D982D /* ProgressView */ = {
+			isa = PBXGroup;
+			children = (
+				28EAEFE325D1D72300FDE92C /* ProgressView.h */,
+				28EAEFE425D1D72300FDE92C /* ProgressView.m */,
+			);
+			path = ProgressView;
+			sourceTree = "<group>";
+		};
+		433015DF2896D1AF001D982D /* TicketTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				284CA9DA25ABB10700BC0911 /* TicketTableViewCell.h */,
+				284CA9DB25ABB10700BC0911 /* TicketTableViewCell.m */,
+			);
+			path = TicketTableViewCell;
+			sourceTree = "<group>";
+		};
+		433015E02896D1F5001D982D /* MainViewController */ = {
+			isa = PBXGroup;
+			children = (
+				28F715EA2596874100EF7DD1 /* MainViewController.h */,
+				28F715EB2596874100EF7DD1 /* MainViewController.m */,
+			);
+			path = MainViewController;
+			sourceTree = "<group>";
+		};
+		433015E12896D207001D982D /* PlaceViewController */ = {
+			isa = PBXGroup;
+			children = (
+				2873B9D325A1FF01002F2950 /* PlaceViewController.h */,
+				2873B9D425A1FF01002F2950 /* PlaceViewController.m */,
+			);
+			path = PlaceViewController;
+			sourceTree = "<group>";
+		};
+		433015E22896D219001D982D /* TicketsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				284CA9DE25ABB5BE00BC0911 /* TicketsViewController.h */,
+				284CA9DF25ABB5BE00BC0911 /* TicketsViewController.m */,
+			);
+			path = TicketsViewController;
+			sourceTree = "<group>";
+		};
+		433015E32896D22B001D982D /* MapViewController */ = {
+			isa = PBXGroup;
+			children = (
+				2837C64625B8CE7A001FDDFD /* MapViewController.h */,
+				2837C64725B8CE7A001FDDFD /* MapViewController.m */,
+			);
+			path = MapViewController;
+			sourceTree = "<group>";
+		};
+		433015E42896D23A001D982D /* TabBarController */ = {
+			isa = PBXGroup;
+			children = (
+				28B6165E25BF5E4700B1C16A /* TabBarController.h */,
+				28B6165F25BF5E4700B1C16A /* TabBarController.m */,
+			);
+			path = TabBarController;
+			sourceTree = "<group>";
+		};
+		433015E52896D250001D982D /* ContentViewController */ = {
+			isa = PBXGroup;
+			children = (
+				28D74B7A25D53935004049CB /* ContentViewController.h */,
+				28D74B7B25D53935004049CB /* ContentViewController.m */,
+			);
+			path = ContentViewController;
+			sourceTree = "<group>";
+		};
+		433015E62896D261001D982D /* FirstViewController */ = {
+			isa = PBXGroup;
+			children = (
+				28D74B7E25D53C43004049CB /* FirstViewController.h */,
+				28D74B7F25D53C43004049CB /* FirstViewController.m */,
+			);
+			path = FirstViewController;
+			sourceTree = "<group>";
+		};
+		433015E72896D270001D982D /* DataManager */ = {
+			isa = PBXGroup;
+			children = (
+				28BB35A82597DB09000B116A /* DataManager.h */,
+				28BB35A92597DB09000B116A /* DataManager.m */,
+			);
+			path = DataManager;
+			sourceTree = "<group>";
+		};
+		433015E82896D27F001D982D /* APIManager */ = {
+			isa = PBXGroup;
+			children = (
+				284CA9CE25AB7C3000BC0911 /* APIManager.h */,
+				284CA9CF25AB7C3000BC0911 /* APIManager.m */,
+			);
+			path = APIManager;
+			sourceTree = "<group>";
+		};
+		433015E92896D291001D982D /* LocationService */ = {
+			isa = PBXGroup;
+			children = (
+				2837C63D25B8C25F001FDDFD /* LocationService.h */,
+				2837C63E25B8C25F001FDDFD /* LocationService.m */,
+			);
+			path = LocationService;
+			sourceTree = "<group>";
+		};
+		433015EA2896D29D001D982D /* NotificationCenter */ = {
+			isa = PBXGroup;
+			children = (
+				28D74B8325D557F6004049CB /* NotificationCenter.h */,
+				28D74B8425D557F6004049CB /* NotificationCenter.m */,
+			);
+			path = NotificationCenter;
+			sourceTree = "<group>";
+		};
+		433015EB2896D2B2001D982D /* FavoriteTicket+CoreDataProperties */ = {
+			isa = PBXGroup;
+			children = (
+				28B8E60A25C5657F00A71FB5 /* FavoriteTicket+CoreDataProperties.h */,
+				28B8E60D25C5657F00A71FB5 /* FavoriteTicket+CoreDataProperties.m */,
+			);
+			path = "FavoriteTicket+CoreDataProperties";
+			sourceTree = "<group>";
+		};
+		433015EC2896D2C0001D982D /* FavoriteTicket+CoreDataClass */ = {
+			isa = PBXGroup;
+			children = (
+				28B8E60B25C5657F00A71FB5 /* FavoriteTicket+CoreDataClass.h */,
+				28B8E60C25C5657F00A71FB5 /* FavoriteTicket+CoreDataClass.m */,
+			);
+			path = "FavoriteTicket+CoreDataClass";
+			sourceTree = "<group>";
+		};
+		433015ED2896D2CE001D982D /* CoreDataHelper */ = {
+			isa = PBXGroup;
+			children = (
+				28B8E61325C5669700A71FB5 /* CoreDataHelper.h */,
+				28B8E61425C5669700A71FB5 /* CoreDataHelper.m */,
+			);
+			path = CoreDataHelper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
